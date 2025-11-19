@@ -1,0 +1,334 @@
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+input,
+button {
+  font: inherit;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+}
+
+input:focus {
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+
+:root {
+  --text-color: #2b2b2b;
+  --background-color: #f3f4ff;
+  --surface-color: #ffffff;
+  --accent-color: #ff4e8a;
+  --accent-hover: #92278f;
+  --border-color: #e0e0e0;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --gradient-bg: linear-gradient(135deg, #dbe4ff 0%, #f3e7ff 100%);
+}
+
+/* --------------------------- Body Layout ----------------------------*/
+body {
+  background: var(--gradient-bg);
+  color: var(--text-color);
+  font-family: "Poppins", "Quicksand", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+/* ---------------------------  App Container ----------------------------*/
+#app {
+  width: 100%;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 12px 30px var(--shadow-color);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+#app:hover {
+  transform: translateY(-4px);
+}
+
+/* ---------------------------  Header ----------------------------*/
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #333;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.5px;
+}
+header h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #000;
+  /* PURE BLACK */
+  letter-spacing: 0.5px;
+}
+/* ---------------------------  New Todo Input ----------------------------*/
+.new-todo {
+  display: flex;
+  width: 100%;
+  background-color: #f0f2ff;
+  border-radius: 50px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border-color);
+  transition: box-shadow 0.3s ease;
+}
+
+.new-todo:focus-within {
+  box-shadow: 0 0 10px rgba(100, 150, 255, 0.3);
+}
+
+.new-todo input {
+  flex-grow: 1;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  color: #333;
+  background: transparent;
+}
+
+.new-todo input::placeholder {
+  color: #aaa;
+}
+
+.new-todo button {
+  background-color: var(--accent-color);
+  color: #fff;
+  padding: 0 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border-radius: 0 50px 50px 0;
+}
+
+.new-todo button:hover {
+  background-color: #92278f;
+  transform: scale(1.05);
+}
+
+/* --------------------------- Stats Section ----------------------------*/
+.todo-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.todo-stat button {
+  background-color: var(--accent-color);
+  color: #fff;
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  transition: background 0.3s ease;
+}
+
+.todo-stat button:hover {
+  background-color: #92278f;
+}
+
+/* --------------------------- Todo List Items ----------------------------*/
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.todo-item {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.9rem 1rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.todo-item:hover {
+  transform: scale(1.01);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Task Header */
+.todo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+  color: #777;
+}
+
+/* Task Actions */
+.todo-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.todo-actions button {
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  padding: 0.3rem 0.6rem;
+  transition: background 0.2s;
+}
+
+.todo-actions button:hover {
+  background-color: #92278f;
+}
+
+/* Task Content */
+.todo-body {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.todo-body p {
+  flex-grow: 1;
+  font-size: 1rem;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Completed Task */
+.todo-done {
+  opacity: 0.6;
+  text-decoration: line-through;
+  color: #999;
+}
+
+/* ---------------------------Empty Todo State ----------------------------*/
+.empty-todo-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 2rem;
+  border: 2px dashed var(--accent-color);
+  border-radius: 12px;
+  background: rgba(255, 240, 245, 0.4);
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.empty-todo-list:hover {
+  background: rgba(255, 240, 245, 0.7);
+}
+
+.empty-todo-list p:first-child {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #444;
+}
+
+.empty-todo-list p:last-child {
+  font-size: 0.95rem;
+  opacity: 0.8;
+  color: #666;
+}
+
+/* --------------------------- Animations ----------------------------*/
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --------------------------- Responsive Design ----------------------------*/
+/* For tablets and smaller laptops */
+@media (max-width: 768px) {
+  #app {
+    padding: 2rem;
+    max-width: 90%;
+  }
+
+  header {
+    font-size: 1.6rem;
+  }
+
+  .new-todo input {
+    font-size: 0.95rem;
+  }
+
+  .todo-item {
+    padding: 0.8rem;
+  }
+}
+
+/* For mobile devices */
+@media (max-width: 480px) {
+  #app {
+    padding: 1.5rem;
+    max-width: 100%;
+  }
+
+  header {
+    font-size: 1.4rem;
+  }
+
+  .new-todo {
+    flex-direction: column;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .new-todo input {
+    width: 100%;
+    padding: 0.7rem;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .new-todo button {
+    width: 100%;
+    border-radius: 0 0 12px 12px;
+    padding: 0.8rem;
+  }
+
+  .todo-stat {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .todo-body p {
+    font-size: 0.9rem;
+  }
+
+  .empty-todo-list {
+    padding: 1.5rem;
+  }
+}
