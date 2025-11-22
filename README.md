@@ -44,6 +44,7 @@ Users can **add, edit, delete, and mark tasks as completed**. The app stores tas
 ## Project Setup
 
 ### 1. Clone the repository
-```bash
-git clone https://github.com/YOUR_USERNAME/your-todo-app.git
-cd your-todo-app
+
+git clone https://github.com/Aasthadixit13/TODO_App.git
+## 🚀 Live Link  
+▶️ https://todo-app-five-ochre-87.vercel.app/
